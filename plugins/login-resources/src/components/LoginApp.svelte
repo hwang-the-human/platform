@@ -30,6 +30,7 @@
   import SelectWorkspace from './SelectWorkspace.svelte'
   import SignupForm from './SignupForm.svelte'
   import LoginIcon from './icons/LoginIcon.svelte'
+  import PixelAnim from "./PixelAnim.svelte"
 
   import loginBack from '../../img/login_back.png'
   import loginBack2x from '../../img/login_back_2x.png'
@@ -87,8 +88,10 @@
         srcset={`${loginBack} 1x, ${loginBack2x} 2x`}
         alt=""
       />
-    </picture>
 
+    </picture>
+    
+    
     <div
       style:position="fixed"
       style:left={$deviceInfo.docWidth <= 480 ? '.75rem' : '1.75rem'}
@@ -97,7 +100,9 @@
     >
       <LoginIcon /><span class="fs-title">{getMetadata(workbench.metadata.PlatformTitle)}</span>
     </div>
-
+    
+ <div class="panel-container">
+    <PixelAnim />
     <div class="panel-base" class:panel={$deviceInfo.docWidth > 768} class:white={!$themeStore.dark}>
       <Scroller padding={'1rem 0'}>
         <div class="form-content">
@@ -123,12 +128,22 @@
         </div>
       </Scroller>
     </div>
+  </div>
 
     <Popup />
   </div>
 </div>
 
 <style lang="scss">
+  .panel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+  }
+
   .back-image {
     position: fixed;
     top: 32px;
